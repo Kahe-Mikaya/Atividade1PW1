@@ -10,8 +10,8 @@ export class Pet{
 	deadline_vaccination: Date;
 	created_at: Date
 
-    constructor(id: Uuid, name:string,type:string,description:string,vaccinated:boolean,deadline_vaccination,created_at){
-        this.id = id
+    constructor( name:string,type:string,description:string,vaccinated:boolean,deadline_vaccination,created_at){
+        this.id = Uuid.randomGenerate();
         this.type = type;
         this.description = description;
         this.vaccinated = vaccinated;

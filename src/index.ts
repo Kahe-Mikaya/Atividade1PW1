@@ -1,32 +1,23 @@
-import express, { Request, Response, NextFunction } from 'express';
+
+
+import express, { Request, Response, NextFunction, response } from 'express';
 import { Pet } from './Pet';
+import { Petshop } from './Petshop';
+import { PetshopController }  from "./controlers/PetshopController";
+import { request } from 'node:http';
 
 
-  
-  type Petshop = {
-    id: string;
-    cnpj: string;
-    name: string;
-    pets: Pet[];
-  }
 
   let clients: Petshop[] = [];
-
+  let usuario
   const server = express();
-  server.use((req, res, next) => {
-    // Digamos que estamos adicionando um usuário fictício
-    req.usuario = { id: 1, nome: 'João' };
-    next();  // Chama o próximo middleware ou rota
-  })
-  server.request.usuario
-server.use(express.json());
-function verifyUserById(request: Request, response: Response, next: NextFunction) {
-    const id = request.params.id;
-    const user = clients.find(client => client.id === id);
-    if (!user) {
-      return response.status(400).json("error:usuário inexistente");
-    }
+  server.use(express.json());
+
+
+  server.get('/users',PetshopController.getPetShop)
+
+  server.listen(3000, () => {
+    console.log('Server is running on port 3000');
+  }); 
+
   
-    request.usuario = user;
-    next();
-  }

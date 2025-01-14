@@ -1,27 +1,20 @@
 {
   "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig to read more about this file */
-
-    /* Projects */
-    "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
-
-    /* Language and Environment */
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-
-    /* Modules */
-    "module": "commonjs",                                /* Specify what module code is generated. */
-
-    /* Emit */
-    "outDir": "./",                                   /* Specify an output folder for all emitted files. */
-
-    /* Interop Constraints */
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
-
-    /* Type Checking */
-    "strict": true                    
+    "target": "ESNext",                    // Alvo de saída ES6 ou ESNext
+    "module": "ESNext",                    // Módulos ES6 (import/export)
+    "moduleResolution": "node",             // Resolução de módulos do Node.js
+    "esModuleInterop": true,                // Garantir compatibilidade com importações CommonJS
+    "skipLibCheck": true,                   // Ignorar a checagem de tipos de bibliotecas
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",                     // Onde os arquivos JS compilados serão colocados
+    "rootDir": "./src",                     // Diretório de origem dos arquivos TypeScript
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true    // Permitir importações padrão de módulos CommonJS
   },
   "include": [
-    "src"
+    "src/**/*.ts"
   ]
 }
+
+
 
