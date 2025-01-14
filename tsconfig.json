@@ -10,6 +10,7 @@
     "rootDir": "./src",                     // Diretório de origem dos arquivos TypeScript
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true    // Permitir importações padrão de módulos CommonJS
+      
   },
   "include": [
     "src/**/*.ts"

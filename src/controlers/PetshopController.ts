@@ -19,7 +19,8 @@ export class PetshopController{
     
       next();
     }
-  static getPetShop(request,response){
+  
+    static getPetShop(request,response){
       return response.status(200).json(clients)
   }
   static getPetShopById(req,response){
@@ -30,5 +31,20 @@ export class PetshopController{
       }
       return response.status(200).json(usuario)
 
-  } 
+  }
+
+
+  static postPetshop(request,response){
+    
+      const dados = request.body as Petshop
+      const petshop: Petshop |null = new Petshop(dados.cnpj,dados.name,[])
+  
+      if (!Petshop) {
+        return response.status(400).json("error:usaario nao cadastrado")
+      }
+      clients.push(petshop)
+      return response.status(200).json(petshop)
+
+  }
+
 }
