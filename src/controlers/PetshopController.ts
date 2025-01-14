@@ -10,7 +10,7 @@ clients.push(usuario)
 export class PetshopController{
 
     
-  static verifyUserById(request: Request, response: Response, next: NextFunction) {
+  static verifyPetShopById(request: Request, response: Response, next: NextFunction) {
       const id = request.params.id;
       const user = clients.find(client => client.id === id);
       if (!user) {
@@ -20,6 +20,15 @@ export class PetshopController{
       next();
     }
   static getPetShop(request,response){
+      return response.status(200).json(clients)
+  }
+  static getPetShopById(req,response){
+      const id = req.params.id
+      usuario = clients.find(client => client.id === id)
+      if (!usuario) {
+        return response.status(400).json("error:usuário inexistente");
+      }
       return response.status(200).json(usuario)
+
   } 
 }
