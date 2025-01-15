@@ -18,8 +18,9 @@ import { request } from 'node:http';
   server.get('/petshops/:id',PetshopController.getPetShopById)
   server.post('/petshops',PetshopController.postPetshop)
 
-  server.get('/pets/:cnpj',PetshopController.checkExistsUserAccount,PetshopController.getPet)
-  server.post('/pets/:cnpj',PetshopController.checkExistsUserAccount,PetshopController.postPet)
+  server.get('/pets',PetshopController.checkExistsUserAccount,PetshopController.getPet)
+  server.post('/pets',PetshopController.checkExistsUserAccount,PetshopController.postPet)
+  server.put('/pets/:id',PetshopController.checkExistsUserAccount,PetshopController.putPet)
 
   server.listen(3000, () => {
     console.log('Server is running on port 3000');

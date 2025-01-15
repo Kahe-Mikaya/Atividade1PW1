@@ -12,10 +12,10 @@ export class PetshopController{
 
     
   static checkExistsUserAccount(request: Request, response: Response, next: NextFunction) {
-    const cnpj = request.params.cnpj;
+    const cnpj = request.headers.cnpj;
     usuario = clients.find(client => client.cnpj === cnpj);
       if (!usuario) {
-        return response.status(400).json("error:usuário inexistente");
+        return response.status(404).json("error: Petshop inexistente");
       }
     
       next();
@@ -49,7 +49,7 @@ export class PetshopController{
   }
 
   static getPet(req : Request, response: Response) {
-      const cnpj: string = req.params.cnpj     
+      const cnpj = req.headers.cnpj     
       const petshop: Petshop = clients.find(client => client.cnpj == cnpj)
 
       return response.status(200).json(petshop.pets)
@@ -67,9 +67,17 @@ export class PetshopController{
     }
     usuario.pets.push(pet)
     return response.status(200).json({message: "petcriado com sucesso"})
+  }
 
 
-
+  static putPet(req, response: Response){
+    const dados = req.body as Pet;
+    let pet = usuario.pets.find(pet => pet.id == req.params.id)
+    if(!pet){
+      return response.status(400).json("error: nao foi possivel achar o pet ")
+    }
+    pet.setpet(dados.name,dados.type,dados.description,dados.deadline_vaccination)
+    return  response.status(200).json({message: "pet alterado com sucesso"})
   }
 
 }
