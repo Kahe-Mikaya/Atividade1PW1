@@ -89,4 +89,13 @@ export class PetshopController{
     return  response.status(200).json({message: "pet alterado com sucesso"})
   }
 
+  static deletePet(req,response){
+    let pet = usuario.pets.find(pet => pet.id == req.params.id)
+    if(!pet){
+      return response.status(400).json("error: nao foi possivel achar o pet ")
+    }
+    usuario.pets = usuario.pets.filter(elemento => elemento.id != pet.id)
+    return  response.status(200).json({message: "pet deletado com sucesso"})
+  } 
+
 }
