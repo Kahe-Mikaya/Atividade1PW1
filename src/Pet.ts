@@ -1,8 +1,8 @@
-import { Uuid } from "./Uuid";
+import {validate as validateUuid, v4 as uuidv4} from 'uuid'
 
 
 export class Pet{
-    id: Uuid; // precisa ser um uuid
+    id: string; // precisa ser um uuid
 	name: string;
 	type: string;
 	description:  string;
@@ -11,7 +11,8 @@ export class Pet{
 	created_at: Date
 
     constructor( name:string,type:string,description:string,vaccinated:boolean,deadline_vaccination,created_at){
-        this.id = Uuid.randomGenerate();
+        this.id = uuidv4()
+        this.name = name;
         this.type = type;
         this.description = description;
         this.vaccinated = vaccinated;

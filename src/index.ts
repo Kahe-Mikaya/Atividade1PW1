@@ -14,9 +14,12 @@ import { request } from 'node:http';
   server.use(express.json());
 
 
-  server.get('/users',PetshopController.getPetShop)
-  server.get('/users/:id',PetshopController.getPetShopById)
-  server.post('/users',PetshopController.postPetshop)
+  server.get('/petshops',PetshopController.getPetShop)
+  server.get('/petshops/:id',PetshopController.getPetShopById)
+  server.post('/petshops',PetshopController.postPetshop)
+
+  server.get('/pets/:cnpj',PetshopController.checkExistsUserAccount,PetshopController.getPet)
+  server.post('/pets/:cnpj',PetshopController.checkExistsUserAccount,PetshopController.postPet)
 
   server.listen(3000, () => {
     console.log('Server is running on port 3000');
